@@ -1,70 +1,66 @@
-*my-template-docs.txt*     For Neovim >= 0.8.0    Last change: 2024 January 18
+*howto.txt*     How-To articles about Vim motions and NeoVim
+
+TABLE OF CONTENTS                         *howto-table-of-contents*
+==============================================================================
+
+How to use Vim help            |howto-vim-help|
+Vim motions                    |howto-vim-motions|
+LSP                            |howto-lsp|
+
+HOW TO USE VIM HELP                       *howto-vim-help*
+==============================================================================
+
+Jump to specific subjects by using tags.  This can be done in two ways:
+
+* Use the `CTRL-]` command while standing on the name of a command or option.
+* Use `CTRL-O` to jump back  
+
+For more information, just write `:help` and press ENTER
+
+VIM MOTIONS                               *howto-vim-motions*
+==============================================================================
+
+Motions are applicable in their own or placed after any |operator|
+
+HORIZONTAL MOVEMENTS
+* `0`, `^`, `$` - Move to the start of the line, first non-blank character, and end of the line, respectively. (`:help 0`, `:help ^`, `:help $`)
+* `w`, `b`, `e` - Move forward by word, back by word, and to the end of the word, respectively. (`:help w`, `:help b`, `:help e`)
+* `f{char}`, `t{char}` - Move to the next occurrence of {char} on the line, or up to just before {char}, respectively. (`:help f`, `:help t`)
+* `F{char}`, `T{char}` - Move to the previous occurrence of {char} on the line, or up to just after {char}, respectively. (`:help F`, `:help T`)
+* `;`, `,` - Repeat the last `f`, `t`, `F`, or `T` command in the same or opposite direction. (`:help ;`, `:help ,`)
+
+VERTICAL MOVEMENTS AND SCROLLING
+* `{`, `}` - Move to the start of the current or next paragraph. (`:help {`, `:help }`)
+* `gg`, `G` - Move to the start of the document, or the end of the document, respectively. (`:help gg`, `:help G`)
+* `H`, `M`, `L` - Move to the top, middle, or bottom of the screen, respectively. (`:help H`, `:help M`, `:help L`)
+* `Ctrl+b`, `Ctrl+f` - Move up or down a full page. (`:help CTRL-B`, `:help CTRL-F`)
+* `Ctrl+u`, `Ctrl+d` - Move up or down half a page. (`:help CTRL-U`, `:help CTRL-D`)
+* `Ctrl+o`, `Ctrl+i` - Jump back or forward to the previous or next cursor position. (`:help CTRL-O`, `:help CTRL-I`)
+* `%` - Jump to matching brace, bracket, or parenthesis. (`:help %`)
+* `:{line}` or `{line}G` - Move to a specific line number. (`:help G`). Tip: type `:set number` to see line numbers.
+
+See |motion.txt|
+
+
+LSP                                       *howto-lsp*
+==============================================================================
+
+*Note*: This is using `neovim/nvim-lspconfig` plugin and the keymaps configured in https://github.com/msaelices/nvim-python
+
+* `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
+* `<Space> ln`: Go to the next diagnostic issue
+* `<Space> lp`: Go to the previous diagnostic issue
+* `<Space> ca`: Run code actions
+* `<Space> ra`: Rename the name over the cursor
+* `<Space> gd`: Go to definition
+* `<Space> q`: Diagnostic listing
+
 
 ==============================================================================
-Table of Contents                         *my-template-docs-table-of-contents*
-
-1. A Neovim Plugin Template        |my-template-docs-a-neovim-plugin-template|
-  - Using it              |my-template-docs-a-neovim-plugin-template-using-it|
-  - Features and structure|my-template-docs-a-neovim-plugin-template-features-and-structure|
-
-==============================================================================
-1. A Neovim Plugin Template        *my-template-docs-a-neovim-plugin-template*
-
-
-
-A template repository for Neovim plugins.
-
-
-USING IT                  *my-template-docs-a-neovim-plugin-template-using-it*
-
-Via `gh`
-
->
-    $ gh repo create my-plugin -p ellisonleao/nvim-plugin-template
-<
-
-Viagithub web page:
-
-Click on `Use this template`
-
-
-
-
-FEATURES AND STRUCTURE*my-template-docs-a-neovim-plugin-template-features-and-structure*
-
-- 100% Lua
-- Github actions for:
-    - running tests using plenary.nvim <https://github.com/nvim-lua/plenary.nvim> and busted <https://olivinelabs.com/busted/>
-    - check for formatting errors (Stylua)
-    - vimdocs autogeneration from README.md file
-    - luarocks release (LUAROCKS_API_KEY secret configuration required)
-
-
-PLUGIN STRUCTURE ~
-
->
-    .
-    ├── lua
-    │   ├── plugin_name
-    │   │   └── module.lua
-    │   └── plugin_name.lua
-    ├── Makefile
-    ├── plugin
-    │   └── plugin_name.lua
-    ├── README.md
-    ├── tests
-    │   ├── minimal_init.lua
-    │   └── plugin_name
-    │       └── plugin_name_spec.lua
-<
-
-==============================================================================
-2. Links                                              *my-template-docs-links*
+LINKS                                     *howto-links*
 
 1. *GitHub Workflow Status*: https://img.shields.io/github/actions/workflow/status/ellisonleao/nvim-plugin-template/lint-test.yml?branch=main&style=for-the-badge
 2. *Lua*: https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua
 3. **: https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png
-
-Generated by panvimdoc <https://github.com/kdheepak/panvimdoc>
 
 vim:tw=78:ts=8:noet:ft=help:norl:

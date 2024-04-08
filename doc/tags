@@ -1,5 +1,6 @@
-my-template-docs-a-neovim-plugin-template	howto.txt	/*my-template-docs-a-neovim-plugin-template*
-my-template-docs-a-neovim-plugin-template-using-it	howto.txt	/*my-template-docs-a-neovim-plugin-template-using-it*
-my-template-docs-links	howto.txt	/*my-template-docs-links*
-my-template-docs-table-of-contents	howto.txt	/*my-template-docs-table-of-contents*
-my-template-docs.txt	howto.txt	/*my-template-docs.txt*
+howto-links	howto.txt	/*howto-links*
+howto-lsp	howto.txt	/*howto-lsp*
+howto-table-of-contents	howto.txt	/*howto-table-of-contents*
+howto-vim-help	howto.txt	/*howto-vim-help*
+howto-vim-motions	howto.txt	/*howto-vim-motions*
+howto.txt	howto.txt	/*howto.txt*

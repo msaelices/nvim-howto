@@ -1,47 +1,33 @@
-# A Neovim Plugin Template
+# NeoVim how-to help docs and utilities
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ellisonleao/nvim-plugin-template/lint-test.yml?branch=main&style=for-the-badge)
-![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
+## Rationale
 
-A template repository for Neovim plugins.
+In order to increase the productivity using Vim, we usually tend to write some cheatsheets or notes and having them stored somewhere.
 
-## Using it
+Why not having all your shorcuts, tips and tricks as help pages? So, in whatever project we are working on, we can type `:help howto-<tab>` and easily access to all our snippets, depending on the topic.
 
-Via `gh`:
+## Installation
 
+You can install nvim-treesitter-textobjects with your favorite package manager, or using the default pack feature of Neovim!
+
+### With Vim-plug
+
+If you are using [vim-plug](https://github.com/junegunn/vim-plug), put this in your init.vim file:
+
+```vim
+Plug 'msaelices/nvim-howto'
 ```
-$ gh repo create my-plugin -p ellisonleao/nvim-plugin-template
+
+### With Packer
+
+```lua
+use({
+  "msaelices/nvim-howto"
+})
 ```
 
-Via github web page:
+### With Lazy.vim
 
-Click on `Use this template`
-
-![](https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png)
-
-## Features and structure
-
-- 100% Lua
-- Github actions for:
-  - running tests using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) and [busted](https://olivinelabs.com/busted/)
-  - check for formatting errors (Stylua)
-  - vimdocs autogeneration from README.md file
-  - luarocks release (LUAROCKS_API_KEY secret configuration required)
-
-### Plugin structure
-
-```
-.
-├── lua
-│   ├── plugin_name
-│   │   └── module.lua
-│   └── plugin_name.lua
-├── Makefile
-├── plugin
-│   └── plugin_name.lua
-├── README.md
-├── tests
-│   ├── minimal_init.lua
-│   └── plugin_name
-│       └── plugin_name_spec.lua
+```lua
+{ "msaelices/nvim-howto" }
 ```

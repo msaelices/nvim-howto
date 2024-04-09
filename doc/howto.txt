@@ -3,10 +3,12 @@
 TABLE OF CONTENTS                         *howto-table-of-contents*
 ==============================================================================
 
-How to use Vim help            |howto-vim-help|
-Vim motions                    |howto-vim-motions|
-LSP                            |howto-lsp|
-Quick navigation               |howto-quick-navigation|
+How to use Vim help               |howto-vim-help|
+Vim motions                       |howto-vim-motions|
+Quick navigation                  |howto-quick-navigation|
+Increment and decrement numbers   |howto-increment-decrement|
+LSP                               |howto-lsp|
+Motions in the code               |howto-motions-in-code|
 
 HOW TO USE VIM HELP                       *howto-vim-help*
 ==============================================================================
@@ -42,19 +44,6 @@ VERTICAL MOVEMENTS AND SCROLLING
 
 See |motion.txt|
 
-LSP                                       *howto-lsp*
-==============================================================================
-
-* `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
-* `<Space> ln`: Go to the next diagnostic issue
-* `<Space> lp`: Go to the previous diagnostic issue
-* `<Space> ca`: Run code actions
-* `<Space> ra`: Rename the name over the cursor
-* `<Space> gd`: Go to definition
-* `<Space> q`: Diagnostic listing
-
-*Note*: These shortcuts use `neovim/nvim-lspconfig` plugin and the keymaps configured in https://github.com/msaelices/nvim-python
-
 QUICK NAVIGATION                          *howto-quick-navigation*
 ==============================================================================
 
@@ -70,6 +59,57 @@ Harpoon:
 * `<Space> 1`: Move to the previous file in Harpoon
 * `<Space> 2`: Move to the next file in Harpoon
 
-*Note*: Some of these shortcuts use `nvim-telescope/telescope.vim` and `ThePrimeagen/harpoon` plugins and the keymaps configured in https://github.com/msaelices/nvim-python
+*Note*: Some of these shortcuts use `nvim-telescope/telescope.vim` and `ThePrimeagen/harpoon` plugins
+
+INCREMENT OR DECREMENT NUMBERS            *howto-increment-decrement*
+==============================================================================
+
+* `Ctrl-a`: Increment the number under the cursor
+* `Ctrl-x`: Decrement the number under the cursor
+* `V` + `Ctrl-a`: Increment all the numbers in the selection
+* `V` + `Ctrl-x`: Decrement all the numbers in the selection
+* `V` + `g` + `Ctrl-a`: Increment all the numbers in the selection, keeping the column alignment
+* `V` + `g` + `Ctrl-x`: Decrement all the numbers in the selection, keeping the column alignment
+* Also works with `Ctrl+V` to select a column
+
+LSP                                       *howto-lsp*
+==============================================================================
+
+* `<Space> lf`: Display the diagnostic float window if the cursor is over one issue
+* `<Space> ln`: Go to the next diagnostic issue
+* `<Space> lp`: Go to the previous diagnostic issue
+* `<Space> ca`: Run code actions
+* `<Space> ra`: Rename the name over the cursor
+* `<Space> gd`: Go to definition
+* `<Space> q`: Diagnostic listing
+
+*Note*: These shortcuts use `neovim/nvim-lspconfig` plugin
+
+MOTIONS IN THE CODE                       *howto-motions-in-code*
+==============================================================================
+
+* `va=`: Select outer part of an assignment
+* `vi=`: Select inner part of an assignment
+* `vil`: Select inner part of a loop
+* `vaf`: Select outer part of a method/function definition
+* `vif`: Select inner part of a method/function definition
+* `vac`: Select outer part of a class
+* `vic`: Select inner part of a class
+
+Change the `v` command with `d`, `c` or `y` to delete, change or yank the text selected by the motion.
+
+* `<leader>na`: swap parameters/argument with next
+* `<leader>n:`: swap object property with next
+* `<leader>nm`: swap function with next
+* `<leader>pa`: swap parameters/argument with prev
+* `<leader>p:`: swap object property with prev
+* `<leader>pm`: swap function with previous
+
+ 
+* `<Space> a`: Open the aereal code outline window
+* `{`: Navigate to the previous symbol in the code outline
+* `}`: Navigate to the next symbol in the code outline
+
+Note: These shortcuts are thanks to the `nvim-treesitter/nvim-treesitter-textobjects` and `stevearc/aerial.nvim` plugins
 
 vim:tw=78:ts=8:noet:ft=help:norl:

@@ -1,8 +1,13 @@
+howto-find-and-replace-with-regex	howto.txt	/*howto-find-and-replace-with-regex*
+howto-horizontal-movements	howto.txt	/*howto-horizontal-movements*
 howto-increment-decrement	howto.txt	/*howto-increment-decrement*
 howto-lsp	howto.txt	/*howto-lsp*
 howto-motions-in-code	howto.txt	/*howto-motions-in-code*
 howto-quick-navigation	howto.txt	/*howto-quick-navigation*
+howto-search-in-repo	howto.txt	/*howto-search-in-repo*
 howto-table-of-contents	howto.txt	/*howto-table-of-contents*
+howto-vertical-movements	howto.txt	/*howto-vertical-movements*
 howto-vim-help	howto.txt	/*howto-vim-help*
 howto-vim-motions	howto.txt	/*howto-vim-motions*
+howto-windows	howto.txt	/*howto-windows*
 howto.txt	howto.txt	/*howto.txt*

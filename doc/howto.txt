@@ -10,8 +10,10 @@ Working with windows              |howto-windows|
 Find and replace with regex       |howto-find-and-replace-with-regex|
 Quick navigation                  |howto-quick-navigation|
 Increment and decrement numbers   |howto-increment-decrement|
+Multi cursors                     |howto-multi-cursors|
 LSP                               |howto-lsp|
 Motions in the code               |howto-motions-in-code|
+Copilot                           |howto-copilot|
 
 HOW TO USE VIM HELP                       *howto-vim-help*
 ==============================================================================
@@ -106,6 +108,30 @@ INCREMENT OR DECREMENT NUMBERS            *howto-increment-decrement*
 * `V` + `g` + `Ctrl-x`: Decrement all the numbers in the selection, keeping the column alignment
 * Also works with `Ctrl+V` to select a column
 
+MULTI CURSORS                             *howto-multi-cursors*
+==============================================================================
+
+Basic usage:
+
+- select words with `Ctrl-N` (like `Ctrl-d` in Sublime Text/VS Code)
+- create cursors vertically with `Ctrl-Down` `Ctrl-Up`
+- select one character at a time with `Shift-Arrows`
+- press `n` `N` to get next/previous occurrence
+- press `[` `]` to select next/previous cursor
+- press `q` to skip current and get next occurrence
+- press `Q` to remove current cursor/selection
+- start insert mode with `i`,`a`,`I`,`A`
+
+Two main modes:
+
+- in _cursor mode_ commands work as they would in normal mode
+- in _extend mode_ commands work as they would in visual mode
+- press `Tab` to switch between «cursor» and «extend» mode
+
+Most vim commands work as expected (motions, `r` to replace characters, `~` to change case, etc).
+
+Note: This is possible thanks to the `mg979/vim-visual-multi` plugin
+
 LSP                                       *howto-lsp*
 ==============================================================================
 
@@ -138,38 +164,12 @@ Change the `v` command with `d`, `c` or `y` to delete, change or yank the text s
 * `<leader>pa`: swap parameters/argument with prev
 * `<leader>p:`: swap object property with prev
 * `<leader>pm`: swap function with previous
-
  
 * `<Space> a`: Open the aereal code outline window
 * `{`: Navigate to the previous symbol in the code outline
 * `}`: Navigate to the next symbol in the code outline
 
 Note: These shortcuts are thanks to the `nvim-treesitter/nvim-treesitter-textobjects` and `stevearc/aerial.nvim` plugins
-
-
-MULTI CURSORS                             *howto-multi-cursors*
-==============================================================================
-
-Basic usage:
-
-- select words with `Ctrl-N` (like `Ctrl-d` in Sublime Text/VS Code)
-- create cursors vertically with `Ctrl-Down` `Ctrl-Up`
-- select one character at a time with `Shift-Arrows`
-- press `n` `N` to get next/previous occurrence
-- press `[` `]` to select next/previous cursor
-- press `q` to skip current and get next occurrence
-- press `Q` to remove current cursor/selection
-- start insert mode with `i`,`a`,`I`,`A`
-
-Two main modes:
-
-- in _cursor mode_ commands work as they would in normal mode
-- in _extend mode_ commands work as they would in visual mode
-- press `Tab` to switch between «cursor» and «extend» mode
-
-Most vim commands work as expected (motions, `r` to replace characters, `~` to change case, etc).
-
-Note: This is possible thanks to the `mg979/vim-visual-multi` plugin
 
 COPILOT                                   *howto-copilot*
 ==============================================================================

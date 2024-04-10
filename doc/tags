@@ -1,8 +1,10 @@
+howto-copilot	howto.txt	/*howto-copilot*
 howto-find-and-replace-with-regex	howto.txt	/*howto-find-and-replace-with-regex*
 howto-horizontal-movements	howto.txt	/*howto-horizontal-movements*
 howto-increment-decrement	howto.txt	/*howto-increment-decrement*
 howto-lsp	howto.txt	/*howto-lsp*
 howto-motions-in-code	howto.txt	/*howto-motions-in-code*
+howto-multi-cursors	howto.txt	/*howto-multi-cursors*
 howto-quick-navigation	howto.txt	/*howto-quick-navigation*
 howto-search-in-repo	howto.txt	/*howto-search-in-repo*
 howto-table-of-contents	howto.txt	/*howto-table-of-contents*

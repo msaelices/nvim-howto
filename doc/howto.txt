@@ -3,17 +3,26 @@
 TABLE OF CONTENTS                         *howto-table-of-contents*
 ==============================================================================
 
-How to use Vim help               |howto-vim-help|
-Vim motions                       |howto-vim-motions|
-Searching in your repo            |howto-search-in-repo|
-Working with windows              |howto-windows|
-Find and replace with regex       |howto-find-and-replace-with-regex|
-Quick navigation                  |howto-quick-navigation|
-Increment and decrement numbers   |howto-increment-decrement|
-Multi cursors                     |howto-multi-cursors|
-LSP                               |howto-lsp|
-Motions in the code               |howto-motions-in-code|
-Copilot                           |howto-copilot|
+How to use Vim help                       |howto-vim-help|
+Vim motions                               |howto-vim-motions|
+Operators                                 |howto-operators|
+Undo, redo and repeat                     |howto-undo-redo-repeat|
+Editing                                   |howto-editing|
+Copy and paste                            |howto-copy-and-paste|
+Visual mode                               |howto-visual-mode|
+Search and replace using visual mode      |howto-visual-mode-search|
+Marks                                     |howto-marks|
+Indentation                               |howto-indentation|
+Folding                                   |howto-folding|
+Searching in your repo                    |howto-search-in-repo|
+Working with windows                      |howto-windows|
+Find and replace with regex               |howto-find-and-replace-with-regex|
+Quick navigation                          |howto-quick-navigation|
+Increment and decrement numbers           |howto-increment-decrement|
+Multi cursors                             |howto-multi-cursors|
+LSP                                       |howto-lsp|
+Motions in the code                       |howto-motions-in-code|
+Copilot                                   |howto-copilot|
 
 HOW TO USE VIM HELP                       *howto-vim-help*
 ==============================================================================
@@ -36,6 +45,7 @@ HORIZONTAL MOVEMENTS                      *howto-horizontal-movements*
 * `f{char}`, `t{char}` - Move to the next occurrence of {char} on the line, or up to just before {char}, respectively. (`:help f`, `:help t`)
 * `F{char}`, `T{char}` - Move to the previous occurrence of {char} on the line, or up to just after {char}, respectively. (`:help F`, `:help T`)
 * `;`, `,` - Repeat the last `f`, `t`, `F`, or `T` command in the same or opposite direction. (`:help ;`, `:help ,`)
+* `{num}j` or `{num}k` - Move up or down `num` lines. Tip: type `:set relativenumber` to see relative line numbers.
 
 VERTICAL MOVEMENTS AND SCROLLING          *howto-vertical-movements*
 * `{`, `}` - Move to the start of the current or next paragraph. (`:help {`, `:help }`)
@@ -46,14 +56,114 @@ VERTICAL MOVEMENTS AND SCROLLING          *howto-vertical-movements*
 * `Ctrl+o`, `Ctrl+i` - Jump back or forward to the previous or next cursor position. (`:help CTRL-O`, `:help CTRL-I`)
 * `%` - Jump to matching brace, bracket, or parenthesis. (`:help %`)
 * `:{line}` or `{line}G` - Move to a specific line number. (`:help G`). Tip: type `:set number` to see line numbers.
+* `yi{motion}`, `ya{motion}` - Yank the text inside or around the text specified by the motion. (`:help text-objects`)
 
 See |motion.txt|
+
+OPERATORS                                 *howto-operators*
+==============================================================================
+
+* The motion commands we have seen before can be used after an operator command, to have the command
+operate on the text that was moved over. (`:help operator`)
+
+* Some of the operators are:
+
+	|c|	c	change
+	|d|	d	delete
+	|y|	y	yank into register (does not change the text)
+	|gu|	gu	make lowercase
+	|gU|	gU	make uppercase
+	|=|	=	autoindent
+	|gq|	gq	text formatting
+	|gw|	gw	text formatting with no cursor movement
+	|>|	>	shift right
+	|<|	<	shift left
+	|!|	!	filter through an external program
+
+COUNT MULTIPLIED
+
+* `{count}{operator}` Multiplies the operation `count` times, e.g., `2yw` copy the next two words from the cursor.
+* `{operator}{count}` Same as above. E.g., `d2w` also deletes two words.
+* `{count1}{operator}{count2}`: If both the motion and operator include a count the two counts are multiplied. E.g., `2d3w` deletes six words.
+* `{operator}{operator}`: When doubling the operator it operates on a line, e.g., `dd` deletes one line.
+* `{count}{operator}{operator}`: When using a count, that many lines are operated upon. Thus `3dd` deletes three lines.
+* `{count1}{operator}{count2}{operator}`: Both counts are multiplied, applied to lines, so `2y3y` yanks six lines.
+
+UNDO, REDO AND REPEAT                     *howto-undo-redo-repeat*
+==============================================================================
+
+* `u` - Undo the last change. (`:help u`)
+* `Ctrl+r` - Redo the last undone change. (`:help i_CTRL-R`)
+* `.` - Repeat the last command. This can be incredibly powerful when combined with movement commands. (`:help .`)
+
+EDITING                                   *howto-editing*
+==============================================================================
+* `i`, `a` - Enter insert mode before the cursor, or after the cursor. (`:help i`, `:help a`)
+* `o`, `O` - Insert a new line below or above the current line and enter insert mode. (`:help o`, `:help O`)
+* `y{motion}`, `d{motion}`, `c{motion}` - Yank (copy), delete, and change (delete and enter insert mode) the text referenced by motion. (`:help y`, `:help d`, `:help c`)
+* `yy`, `dd`, `cc` - Yank (copy), delete, and change (delete and enter insert mode) the entire line. (`:help yy`, `:help dd`, `:help cc`)
+* `di{motion}`, `da{motion}` - Delete the text inside or around the text specified by the motion. (`:help text-objects`)
+* `ci{motion}`, `ca{motion}` - Change the text inside or around the text specified by the motion. (`:help text-objects`)
+* `yi{motion}`, `ya{motion}` - Yank the text inside or around the text specified by the motion. (`:help text-objects`)
+
+COPY AND PASTE                            *howto-copy-and-paste*
+==============================================================================
+* `p`, `P` - Paste the yanked or deleted text after or before the cursor, respectively. (`:help p`, `:help P`)
+* `"+y`, `"+p` - Yank to or paste from the system clipboard. (`:help clipboard`)
+* `:reg` - Display the contents of the registers. (`:help :reg`)
+* `"{register}y`, `"{register}p` - Yank to or paste from a specific register. (`:help registers`)
+* `:set paste`, `:set nopaste` - Toggle paste mode to prevent auto-indenting when pasting. (`:help paste`)
+* `:echo has('clipboard')` - Check if your Vim installation supports clipboard operations. 1 means yes, 0 means no (`:help has()`)
+
+VISUAL MODE                               *howto-visual-mode*
+==============================================================================
+* `v`, `V`, `Ctrl+v` - Enter visual mode by character, line, or block (column), respectively. (`:help visual-mode`)
+
+We can then use `y` or `d` to yank (copy) or delete your selection or any
+other |operator|, like `U` to uppercase all the selection.
+
+SEARCH AND REPLACE USING VISUAL MODE      *howto-visual-mode-search*
+==============================================================================
+* `/`, `?` - Search forward or backward in the document. (`:help /`, `:help ?`)
+* `*`, `#` - Search for the word under the cursor forward or backward. (`:help *`, `:help #`)
+* `:%s/old/new/g` - Replace all occurrences of old with new in the document. (`:help :s`)
+
+We can use `\1`, `\2`, etc. to refer to the matched groups, so between `\(` and `\)`, in the `old` part of the command.
+
+Examples:
+
+`:%s/update_fields=\[\(.*\)]/update_fields=(\1,)`: Replace `update_fields=[...]` with `update_fields=(...,)` in the whole file
+Click `V`, select rows in a CSV and then `:s/\(.*\),\(.*\)/\2,\1/`: Swap two comma-separated values in the selected rows
+
+* Trick for find and replace:
+  1. `*` or `/` search the word you want to replace
+  2. Press `cgn` search forward the last used search patern and start visual mode replacing it. (`:help gn`)
+  3. Type the new word and press enter `ESC` to exit insert mode
+  4. Press `n` to find next occurrence and `.` to repeat the last change
+
+MARKS                                     *howto-marks*
+==============================================================================
+* `m{letter}` - Set a mark at the current cursor position. (`:help m`)
+* `'{letter}` - Jump to the line of the mark. (`:help '`)
+
+INDENTATION                               *howto-indentation*
+==============================================================================
+* `=` - Auto-indent the selected text. (`:help =`)
+* `>>`, `<<` - Indent or unindent the selected lines. (`:help >>`, `:help <<`)
+
+FOLDING                                   *howto-folding*
+==============================================================================
+* `zo`, `zc` - Open or close a fold under the cursor. (`:help folding`)
+* `za` - Toggle the fold under the cursor. (`:help folding`)
+* `zA` - Toggle all folds. (`:help folding`)
 
 SEARCHING IN YOUR REPO                    *howto-search-in-repo*
 ==============================================================================
 
-* `<Space> fw`: Find/open files based on its content (grep)
+* `<Space> fw`: Find/open files based on its content (grep).
 * `:vimgrep {pattern} {files}` - Search for a pattern in multiple files and populate the quick fix list. (`:help :vimgrep`)
+
+*Note*: The `<Space> fw` shortcut uses the `nvim-telescope/telescope.vim` plugin
 
 FIND AND REPLACE WITH REGEX               *howto-find-and-replace-with-regex*
 ==============================================================================

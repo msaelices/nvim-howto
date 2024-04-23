@@ -82,9 +82,9 @@ operate on the text that was moved over. (`:help operator`)
 
 COUNT MULTIPLIED
 
-* `{count}{operator}` Multiplies the operation `count` times, e.g., `2yw` copy the next two words from the cursor.
-* `{operator}{count}` Same as above. E.g., `d2w` also deletes two words.
-* `{count1}{operator}{count2}`: If both the motion and operator include a count the two counts are multiplied. E.g., `2d3w` deletes six words.
+* `{count}{operator}{motion}` Multiplies the operation `count` times, e.g., `2yw` copy the next two words from the cursor.
+* `{operator}{count}{motion}` Same as above. E.g., `d2w` also deletes two words.
+* `{count1}{operator}{count2}{motion}`: If both the motion and operator include a count the two counts are multiplied. E.g., `2d3w` deletes six words.
 * `{operator}{operator}`: When doubling the operator it operates on a line, e.g., `dd` deletes one line.
 * `{count}{operator}{operator}`: When using a count, that many lines are operated upon. Thus `3dd` deletes three lines.
 * `{count1}{operator}{count2}{operator}`: Both counts are multiplied, applied to lines, so `2y3y` yanks six lines.

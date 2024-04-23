@@ -11,6 +11,7 @@ howto-marks	howto.txt	/*howto-marks*
 howto-motions-in-code	howto.txt	/*howto-motions-in-code*
 howto-multi-cursors	howto.txt	/*howto-multi-cursors*
 howto-operators	howto.txt	/*howto-operators*
+howto-quick-fix-list	howto.txt	/*howto-quick-fix-list*
 howto-quick-navigation	howto.txt	/*howto-quick-navigation*
 howto-search-in-repo	howto.txt	/*howto-search-in-repo*
 howto-table-of-contents	howto.txt	/*howto-table-of-contents*

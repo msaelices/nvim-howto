@@ -18,6 +18,7 @@ Searching in your repo                    |howto-search-in-repo|
 Working with windows                      |howto-windows|
 Find and replace with regex               |howto-find-and-replace-with-regex|
 Quick navigation                          |howto-quick-navigation|
+Quick Fix List                            |howto-quick-fix-list|
 Increment and decrement numbers           |howto-increment-decrement|
 Multi cursors                             |howto-multi-cursors|
 LSP                                       |howto-lsp|
@@ -206,6 +207,28 @@ Harpoon:
 * `<Space> 2`: Move to the next file in Harpoon
 
 *Note*: Some of these shortcuts use `nvim-telescope/telescope.vim` and `ThePrimeagen/harpoon` plugins
+
+QUICK FIX LIST                           *howto-quick-fix-list*
+==============================================================================
+* `:vimgrep {pattern} {files}` - Search for a pattern in multiple files and populate the quick fix list. (`:help :vimgrep`)
+* `:grep {pattern} {files}` - Search for a pattern in multiple files using the external grep tool and populates the quick fix list. (`:help :grep`)
+* `:copen` - Open the quick fix list. (`:help :copen`)
+* `:cclose` - Close the quick fix list. (`:help :cclose`)
+* `:cnext`, `:cprev` - Navigate through the quick fix list. (`:help :cnext`, `:help :cprev`)
+* `:cdo {cmd}`, `:ldo {cmd}` - Run a command on each item in the quick fix or location list. (`:help :cdo`, `:help :ldo`)
+* `:cdo norm {keys}` - Run normal mode commands on each item in the quick fix list. (`:help :execute`, `:help :norm`)
+
+Example:
+
+:vimgrep TODO src/django/agentsmith/**/*.py
+:cdo %s/TODO/FIXME/gc
+:wa
+
+Example of executing the `q` macro on each item in the quick fix list over the pattern `pattern`:
+
+:vimgrep /pattern/ **/*.py
+:cdo norm @q
+
 
 INCREMENT OR DECREMENT NUMBERS            *howto-increment-decrement*
 ==============================================================================
